@@ -61,7 +61,7 @@ module Prpr
         end
 
         def config
-          @config ||= Config::Github.new(repository_name)
+          @config ||= Config::Github.new(repository_name, branch: default_branch)
         end
 
         def env
@@ -78,6 +78,10 @@ module Prpr
 
         def to_dm?
           env[:mention_reviewers_to_dm] == 'true'
+        end
+
+        def default_branch
+          event.repository.default_branch
         end
       end
     end
