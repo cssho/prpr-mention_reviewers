@@ -52,7 +52,7 @@ module Prpr
 
         def members
           @members ||= config.read(name).lines.map { |line|
-            if line =~ / \* (\S+):\s*(\S+)/
+            if line =~ / \* (\S+):\s*(.+)/
               [$1, $2]
             end
           }.to_h
