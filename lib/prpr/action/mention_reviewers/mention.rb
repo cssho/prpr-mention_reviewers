@@ -35,7 +35,7 @@ module Prpr
         end
 
         def reviewer_mention_name
-          members[reviewer] || reviewer
+          "<" + (members[reviewer] || reviewer) + ">"
         end
 
         def reviewer
