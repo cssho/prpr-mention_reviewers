@@ -39,11 +39,11 @@ module Prpr
         end
 
         def reviewer_mention_name
-          "<" + (members[reviewer] || reviewer || reviewer_team) + ">"
+          "<" + (members[reviewer] || reviewer_team || reviewer) + ">"
         end
 
         def reviewer_team
-          "<!subteam^#{members[requested_team]}>"
+          members[requested_team].nil? ? nil : "<!subteam^#{members[requested_team]}>"
         end
 
         def reviewer
