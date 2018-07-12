@@ -21,6 +21,10 @@ module Prpr
           event.requested_reviewer
         end
 
+        def requested_team
+          event.requested_team
+        end
+
         def body
           <<-END
 #{reviewer_mention_name}
@@ -35,7 +39,11 @@ module Prpr
         end
 
         def reviewer_mention_name
-          "<" + (members[reviewer] || reviewer) + ">"
+          "<" + (members[reviewer] || reviewer || reviewer_team) + ">"
+        end
+
+        def reviewer_team
+          "@#{requested_team.login}"
         end
 
         def reviewer
