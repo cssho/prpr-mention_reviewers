@@ -43,7 +43,7 @@ module Prpr
         end
 
         def reviewer_team
-          "@#{requested_team.login}"
+          "@#{requested_team.slug}"
         end
 
         def reviewer
