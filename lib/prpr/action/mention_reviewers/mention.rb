@@ -39,10 +39,15 @@ module Prpr
         end
 
         def reviewer_mention_name
-          puts members[requested_reviewer]
-          puts requested_reviewer
-          puts requested_team
-          "<@#{(members[requested_reviewer] || requested_reviewer || requested_team)}>"
+          "<" + (members[reviewer] || reviewer || members[reviewer_team] || reviewer_team) + ">"
+        end
+
+        def reviewer_team
+          "@#{requested_team}"
+        end
+
+        def reviewer
+          "@#{requested_reviewer}"
         end
 
         def from
