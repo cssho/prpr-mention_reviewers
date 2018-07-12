@@ -18,11 +18,11 @@ module Prpr
         end
 
         def requested_reviewer
-          event.requested_reviewer
+          event&.requested_reviewer
         end
 
         def requested_team
-          event.requested_team
+          event&.requested_team
         end
 
         def body
@@ -43,11 +43,11 @@ module Prpr
         end
 
         def reviewer_team
-          "@#{requested_team.slug}"
+          "@#{requested_team&.slug}"
         end
 
         def reviewer
-          "@#{requested_reviewer.login}"
+          "@#{requested_reviewer&.login}"
         end
 
         def from
