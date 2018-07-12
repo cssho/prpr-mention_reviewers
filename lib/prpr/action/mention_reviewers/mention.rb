@@ -22,7 +22,7 @@ module Prpr
         end
 
         def requested_team
-          event&.requested_team&.login&.slug
+          event&.requested_team&.slug
         end
 
         def body
