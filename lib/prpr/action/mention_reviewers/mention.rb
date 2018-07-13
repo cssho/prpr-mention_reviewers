@@ -53,8 +53,8 @@ module Prpr
           comment.empty? ? "Please review my PR: #{pull_request.title}" : comment
         end
 
-        def reviewer_mention_name          
-          "<" + (members[reviewer] || members[reviewer_team].nil? ? nil : "!subteam^#{members[reviewer_team]}" || reviewer) + ">"
+        def reviewer_mention_name
+          "<" + (members[reviewer] || (members[reviewer_team].nil? ? nil : "!subteam^#{members[reviewer_team]}") || reviewer) + ">"
         end
 
         def reviewer_team
