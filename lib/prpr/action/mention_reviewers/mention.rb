@@ -9,8 +9,23 @@ module Prpr
         private
 
         def message
-          channel = to_dm? ? reviewer_mention_name : room
-          Prpr::Publisher::Message.new(body: body, from: from, room: channel)
+          begin
+            channel = to_dm? ? reviewer_mention_name : room
+            Prpr::Publisher::Message.new(body: body, from: from, room: channel)
+          rescue => e
+            puts full_backtrace(e, depth: 1).join("\n")
+          end
+        end
+
+        def full_backtrace(e, depth:)
+          items = []
+          items << e.class.name + " " + e.message
+          items += e.backtrace
+          if (e.cause == nil) || (depth >= MAX_BACKTRACE_DEPTH)
+            return items
+          else
+            return items + full_backtrace(e.cause, depth: depth + 1)
+          end
         end
 
         def pull_request
