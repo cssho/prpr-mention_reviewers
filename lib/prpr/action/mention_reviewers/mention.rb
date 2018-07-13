@@ -58,7 +58,7 @@ module Prpr
           puts "[#{members[reviewer]}]"
           puts "[#{requested_team}]"
           puts "[#{reviewer_team}]"
-          puts "[#{reviewer}]"
+          puts (members[reviewer] || members[reviewer_team].nil? ? false : "!subteam^#{members[reviewer_team]}" || reviewer)
           
           "<" + (members[reviewer] || members[reviewer_team].nil? ? false : "!subteam^#{members[reviewer_team]}" || reviewer) + ">"
         end
